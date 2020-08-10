@@ -1,0 +1,18 @@
+REGEX TO select class names not including extends
+
+(?<=class\s)[a-zA-Z0-9]+(?=\s\{)
+
+
+REGEX to select class names including extends
+
+(?<=class\s)[a-zA-Z0-9]+((?:extends)?\s[a-zA-Z0-9]+)*(?=\s\{)
+
+
+REGEX to select method names with parameters
+
+^\s*[a-zA-Z0-9]+(\(){1}[a-zA-Z0-9,\s]*(\)){1}(?=\s\{)
+
+
+REGEX to select attributes inside of classes (this.???)
+
+(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])
