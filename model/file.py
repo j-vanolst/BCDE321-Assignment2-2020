@@ -6,6 +6,7 @@ class_regex = '(?<=class\s)[a-zA-Z0-9]+((?:extends)?\s[a-zA-Z0-9]+)*(?=\s\{)'
 
 
 class File:
+    '''Represents a file object, contains a filename, location, file lines and a list of classes'''
     def __init__(self, name, location, lines):
         self.name = name
         self.location = location
@@ -18,6 +19,7 @@ class File:
         self.classes.append(newClass)
 
     def find_classes(self):
+        '''Uses regular expressions to locate class definitions within a JavaScript file'''
         for aLine in self.lines:
             re_match = re.search(class_regex, aLine)
             if (re_match):

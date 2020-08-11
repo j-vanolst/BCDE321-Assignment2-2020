@@ -7,6 +7,7 @@ attribute_regex = '(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])'
 
 
 class Class:
+    '''Represents a class object, contains a name, a list of methods and a list of attributes'''
     def __init__(self, name, lines):
         self.name = name
         self.lines = lines
@@ -20,6 +21,7 @@ class Class:
         self.methods.append(newMethod)
 
     def find_methods(self):
+        '''Uses regular expressions to locate method definitions within a JavaScript file'''
         for aLine in self.lines:
             re_match = re.search(method_regex, aLine)
             if (re_match):
@@ -31,6 +33,7 @@ class Class:
         self.attributes.append(newAttribute)
 
     def find_attributes(self):
+        '''Uses regular expressions to locate attribute definitions within a JavaScript file'''
         for aLine in self.lines:
             re_match = re.search(attribute_regex, aLine)
             if (re_match):
