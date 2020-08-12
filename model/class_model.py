@@ -5,7 +5,6 @@ from model.method import Method
 method_regex = '^\s*[a-zA-Z0-9]+(\(){1}[a-zA-Z0-9,\s]*(\)){1}(?=\s\{)'
 attribute_regex = '(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])'
 
-
 class Class:
     '''Represents a class object, contains a name, a list of methods and a list of attributes'''
     def __init__(self, name, lines):
@@ -26,7 +25,6 @@ class Class:
             re_match = re.search(method_regex, aLine)
             if (re_match):
                 newMethod = Method(re_match.group().strip())
-                # print(re_match.string)
                 self.add_method(newMethod)
 
     def add_attribute(self, newAttribute):
