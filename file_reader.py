@@ -8,6 +8,8 @@ filename_regex = '(?<=[a-zA-Z0-9])*[a-zA-Z0-9]+\.[a-zA-Z0-9]*'
 
 def get_filenames(path):
     '''Returns a list of all javascript files recursively from a given path'''
+    print(f'Finding JavaScript files in {path}...')
+
     filenames = []
 
     for folder in os.walk(path):
