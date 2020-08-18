@@ -1,0 +1,29 @@
+digraph Couriers {
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+
+node [
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+shape = "record"
+]
+
+edge [
+arrowtail = "empty"
+]
+
+Courier [
+label = "{Courier|+ name : string\l+ home_country : string\l|+ calculateShipping() : float\l+ ship(): boolean\l}"
+]
+
+Monotype [
+label = "{MonotypeDelivery|\l|+ ship(): boolean\l}"
+]
+
+Pigeon [
+label = "{PigeonPost|\l|+ ship(): boolean\l}"
+]
+
+Courier -> Pigeon
+Courier -> Monotype [dir=back]
+}

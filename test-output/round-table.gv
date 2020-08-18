@@ -1,0 +1,11 @@
+digraph {
+	node [fontname="Bitstream Vera Sans" fontsize=8 shape=record]
+	graph [splines=false]
+	edge [arrowtail=empty]
+	A [label="King Arthur"]
+	B [label="{MonotypeDelivery|\l|+ ship(): boolean\l}"]
+	L [label="Sir Lancelot the Brave"]
+	A -> B
+	A -> L
+	B -> L [dir=back]
+}
