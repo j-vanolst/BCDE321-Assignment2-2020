@@ -20,6 +20,12 @@ class Method:
         for aParameter in parameters:
             self.add_parameter(aParameter.strip())
 
+    def get_name(self):
+        return self.name
+
+    def get_parameters(self):
+        return self.parameters
+
     def __str__(self):
         output_string = ''
         output_string += f'{self.name}\n'

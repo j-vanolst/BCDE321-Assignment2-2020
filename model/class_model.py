@@ -37,6 +37,15 @@ class Class:
             if (re_match):
                 self.add_attribute(re_match.group())
 
+    def get_name(self):
+        return self.name
+
+    def get_attributes(self):
+        return self.attributes
+
+    def get_methods(self):
+        return self.methods
+
     def __str__(self):
         output_string = ''
         output_string += f'\t{self.name}\n'

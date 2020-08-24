@@ -45,6 +45,9 @@ class File:
                 new_class = Class(class_names[i], lines)
                 self.add_class(new_class)
 
+    def get_classes(self):
+        return self.classes
+
     def __str__(self):
         output_string = '\n'
         output_string += f'Filename: {self.name}\n'

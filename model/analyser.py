@@ -38,7 +38,7 @@ class JSAnalyser:
             try:
                 file = open(aFilename, 'r')
                 lines = file.read().split('\n')
-                file.close
+                file.close()
             except (OSError, IOError):
                 print(f'File: {os.path.join(os.path.abspath(self.path))} not found.')
                 lines = []
@@ -50,6 +50,9 @@ class JSAnalyser:
 
                 new_file = File(filename, location, lines)
                 self.files.append(new_file)
+
+    def get_files(self):
+        return self.files
 
     def __str__(self):
         output_string = ''

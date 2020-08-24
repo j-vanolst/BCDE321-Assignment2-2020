@@ -126,3 +126,6 @@ dmypy.json
 
 # Custom Gitignore
 conda/
+
+test/demo_unittest.py
+
