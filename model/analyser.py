@@ -6,6 +6,7 @@ from model.file import File
 
 filename_regex = '(?<=[a-zA-Z0-9])*[a-zA-Z0-9]+\.[a-zA-Z0-9]*'
 
+
 class JSAnalyser:
 
     def __init__(self, path):
@@ -25,7 +26,8 @@ class JSAnalyser:
                 for filename in glob.glob(os.path.join(folder[0], '*.js')):
                     self.filenames.append(filename)
             filenames = '\n\t'
-            print(f'Found {len(self.filenames)} JavaScript file(s):\n\t{filenames.join(self.filenames)}')
+            print(
+                f'Found {len(self.filenames)} JavaScript file(s):\n\t{filenames.join(self.filenames)}')
         elif os.path.isfile(self.path):
             print(f'Analyzing JavaScript file: {self.path}')
             self.filenames.append(self.path)
@@ -40,7 +42,8 @@ class JSAnalyser:
                 lines = file.read().split('\n')
                 file.close()
             except (OSError, IOError):
-                print(f'File: {os.path.join(os.path.abspath(self.path))} not found.')
+                print(
+                    f'File: {os.path.join(os.path.abspath(self.path))} not found.')
                 lines = []
 
             if (file):
@@ -53,6 +56,13 @@ class JSAnalyser:
 
     def get_files(self):
         return self.files
+
+    def get_classes(self):
+        classes = []
+        for aFile in self.files:
+            for aClass in aFile.get_classes():
+                classes.append(aClass)
+        return classes
 
     def __str__(self):
         output_string = ''
