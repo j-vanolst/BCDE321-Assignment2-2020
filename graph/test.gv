@@ -1,0 +1,6 @@
+digraph {
+	node [fontname="Bitstream Vera Sans" fontsize=8 shape=record]
+	edge [arrowtail=empty dir=back]
+	A [label="{Animal|name\lage\l|constructor(self, name)\lgreet()\l}"]
+	B [label="{Animal|name\lage\l|constructor(self, name)\lgreet()\l}"]
+}
