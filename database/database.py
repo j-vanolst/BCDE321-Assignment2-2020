@@ -7,7 +7,6 @@ class Database(metaclass=ABCMeta):
         self.username = username
         self.password = password
         self.db = None
-        self.cursor = None
 
     def __str__(self):
         return f'Database: {self.database} Address: {self.address} Username: {self.username} Password: {self.password}'
@@ -22,4 +21,8 @@ class Database(metaclass=ABCMeta):
 
     @abstractmethod
     def fetch(self):
+        pass
+
+    @abstractmethod
+    def setup(self):
         pass

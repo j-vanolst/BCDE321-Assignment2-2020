@@ -48,6 +48,23 @@ class File:
     def get_classes(self):
         return self.classes
 
+    def class_count(self):
+        return len(self.classes)
+
+    def method_count(self):
+        method_count = 0
+        for aClass in self.classes:
+            method_count += aClass.method_count()
+
+        return method_count
+
+    def attribute_count(self):
+        attribute_count = 0
+        for aClass in self.classes:
+            attribute_count += aClass.attribute_count()
+
+        return attribute_count
+
     def __str__(self):
         output_string = '\n'
         output_string += f'Filename: {self.name}\n'

@@ -64,6 +64,30 @@ class JSAnalyser:
                 classes.append(aClass)
         return classes
 
+    def file_count(self):
+        return len(self.files)
+
+    def class_count(self):
+        class_count = 0
+        for aFile in self.files:
+            class_count += aFile.class_count()
+
+        return class_count
+
+    def method_count(self):
+        method_count = 0
+        for aFile in self.files:
+            method_count += aFile.method_count()
+
+        return method_count
+
+    def attribute_count(self):
+        attribute_count = 0
+        for aFile in self.files:
+            attribute_count += aFile.attribute_count()
+
+        return attribute_count
+
     def __str__(self):
         output_string = ''
         for aFile in self.files:

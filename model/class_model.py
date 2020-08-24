@@ -46,6 +46,12 @@ class Class:
     def get_methods(self):
         return self.methods
 
+    def method_count(self):
+        return len(self.methods)
+
+    def attribute_count(self):
+        return len(self.attributes)
+
     def __str__(self):
         output_string = ''
         output_string += f'\t{self.name}\n'
