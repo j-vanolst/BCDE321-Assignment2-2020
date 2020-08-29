@@ -1,15 +1,15 @@
 import re
 
+from model.abc.classABC import ClassABC
 from model.method import Method
 
 method_regex = '^\s*[a-zA-Z0-9]+(\(){1}[a-zA-Z0-9,\s]*(\)){1}(?=\s\{)'
 attribute_regex = '(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])'
 
-class Class:
+class Class(ClassABC):
     '''Represents a class object, contains a name, a list of methods and a list of attributes'''
     def __init__(self, name, lines):
-        self.name = name
-        self.lines = lines
+        super().__init__(name, lines)
         self.methods = []
         self.attributes = []
 

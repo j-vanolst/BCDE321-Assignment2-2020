@@ -1,15 +1,14 @@
 import re
 
+from model.abc.fileABC import FileABC
 from model.class_model import Class
 
 class_regex = '(?<=class\s)[a-zA-Z0-9]+((?:extends)?\s[a-zA-Z0-9]+)*(?=\s\{)'
 
-class File:
+class File(FileABC):
     '''Represents a file object, contains a filename, location, file lines and a list of classes'''
     def __init__(self, name, location, lines):
-        self.name = name
-        self.location = location
-        self.lines = lines
+        super().__init__(name, location, lines)
         self.classes = []
 
         self.find_classes()

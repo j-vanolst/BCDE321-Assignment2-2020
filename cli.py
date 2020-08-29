@@ -1,16 +1,22 @@
 from cmd import Cmd
+import argparse
 
 # Local Imports
 from database.sqlitedb import SqliteDB
 from model.analyser import JSAnalyser
 from graph.grapher import Grapher
 
+# Argument Parser
+parser = argparse.ArgumentParser()
+parser.add_argument('dbname', metavar='DB', type=str, default='database.db', help='A database name for storing analyses')
+args = parser.parse_args()
+
 class Menu(Cmd):
 
     def __init__(self):
         Cmd.__init__(self)
         self.prompt = ">>> "
-        self.db = SqliteDB('analysis.db')
+        self.db = SqliteDB(args.dbname)
 
     def do_add_record(self, path: str):
         """

@@ -1,7 +1,9 @@
-class Method:
+from model.abc.methodABC import MethodABC
+
+class Method(MethodABC):
     '''Represents a method object, contains a name and a list of parameters'''
     def __init__(self, name):
-        self.name = name
+        super().__init__(name)
         self.parameters = []
 
         self.find_parameters()

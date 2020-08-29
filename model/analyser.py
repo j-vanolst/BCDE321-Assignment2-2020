@@ -2,15 +2,16 @@ import os
 import re
 import glob
 
+from model.abc.analyserABC import Analyser
 from model.file import File
 
 filename_regex = '(?<=[a-zA-Z0-9])*[a-zA-Z0-9]+\.[a-zA-Z0-9]*'
 
 
-class JSAnalyser:
+class JSAnalyser(Analyser):
 
     def __init__(self, path):
-        self.path = path
+        super().__init__(path)
         self.filenames = []
         self.files = []
 
