@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
+
 class ClassABC(metaclass=ABCMeta):
     def __init__(self, name, lines):
         self.name = name
@@ -16,7 +17,7 @@ class ClassABC(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def add_attribute(self):
+    def add_attribute(self, newAttribute):
         pass
 
     @abstractmethod

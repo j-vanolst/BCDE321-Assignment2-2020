@@ -3,10 +3,13 @@ import re
 from model.abc.fileABC import FileABC
 from model.class_model import Class
 
-class_regex = '(?<=class\s)[a-zA-Z0-9]+((?:extends)?\s[a-zA-Z0-9]+)*(?=\s\{)'
+class_regex = r'(?<=class\s)[a-zA-Z0-9]+((?:extends)?\s[a-zA-Z0-9]+)*(?=\s\{)'
+
 
 class File(FileABC):
-    '''Represents a file object, contains a filename, location, file lines and a list of classes'''
+    '''Represents a file object, contains a filename,
+    location, file lines and a list of classes'''
+
     def __init__(self, name, location, lines):
         super().__init__(name, location, lines)
         self.classes = []
@@ -17,7 +20,8 @@ class File(FileABC):
         self.classes.append(newClass)
 
     def find_classes(self):
-        '''Uses regular expressions to locate class definitions within a JavaScript file'''
+        '''Uses regular expressions to locate class definitions
+        within a JavaScript file'''
         class_names = []
         class_indexes = []
 
@@ -27,8 +31,10 @@ class File(FileABC):
                 class_names.append(re_match.group())
                 class_indexes.append(self.lines.index(aLine))
 
-        # If the current file contains multiple class declarations splice the lines
-        # according to the start and end line index of the current class declaration
+        # If the current file contains multiple class declarations
+        # splice the lines
+        # according to the start and end line index of the current class
+        # declaration
         for i in range(0, len(class_names)):
             if (i < len(class_names) - 1):
                 class_start_index = class_indexes[i]

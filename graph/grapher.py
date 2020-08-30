@@ -32,8 +32,7 @@ class Grapher:
 
     def render(self):
         if (len(self.labels) != 0):
-            self.graph.render('../output/output.gv', view=True)
-            render('dot', 'pdf', '../output/output.gv')
+            self.graph.render('output/output')
+            render('dot', 'pdf', 'output/output')
         else:
             print('Nothing to render...')
-

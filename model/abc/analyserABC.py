@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
+
 class Analyser(metaclass=ABCMeta):
     def __init__(self, path):
         self.path = path

@@ -5,7 +5,7 @@ import glob
 from model.abc.analyserABC import Analyser
 from model.file import File
 
-filename_regex = '(?<=[a-zA-Z0-9])*[a-zA-Z0-9]+\.[a-zA-Z0-9]*'
+filename_regex = r'(?<=[a-zA-Z0-9])*[a-zA-Z0-9]+\.[a-zA-Z0-9]*'
 
 
 class JSAnalyser(Analyser):
@@ -19,18 +19,20 @@ class JSAnalyser(Analyser):
         self.read_files()
 
     def get_filenames(self):
-        '''Returns a list of all javascript files recursively from a given path'''
+        '''Returns a list of all javascript files recursively
+        from a given path'''
         # Check if the supplied path is a folder or a directory
         if os.path.isdir(self.path):
-            print(f'Finding JavaScript files in: {self.path}...')
+            # print(f'Finding JavaScript files in: {self.path}...')
             for folder in os.walk(self.path):
                 for filename in glob.glob(os.path.join(folder[0], '*.js')):
                     self.filenames.append(filename)
-            filenames = '\n\t'
-            print(
-                f'Found {len(self.filenames)} JavaScript file(s):\n\t{filenames.join(self.filenames)}')
+            # filenames = '\n\t'
+            # print(
+                # f'Found {len(self.filenames)} JavaScript
+                # file(s):\n\t{filenames.join(self.filenames)}')
         elif os.path.isfile(self.path):
-            print(f'Analyzing JavaScript file: {self.path}')
+            # print(f'Analyzing JavaScript file: {self.path}')
             self.filenames.append(self.path)
         else:
             print(f'Invalid path: {self.path}')
@@ -44,7 +46,8 @@ class JSAnalyser(Analyser):
                 file.close()
             except (OSError, IOError):
                 print(
-                    f'File: {os.path.join(os.path.abspath(self.path))} not found.')
+                    f'File: {os.path.join(os.path.abspath(self.path))}'
+                    f' not found.')
                 lines = []
 
             if (file):

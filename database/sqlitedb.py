@@ -2,6 +2,7 @@ import sqlite3
 
 from database.database import Database
 
+
 class SqliteDB(Database):
     def __init__(self, database):
         super().__init__(database)
@@ -51,6 +52,7 @@ class SqliteDB(Database):
               'methodCount integer)'
         self.query(sql)
 
+
 class DatabaseConnectError(Exception):
 
     def __init__(self, *args):
@@ -65,6 +67,7 @@ class DatabaseConnectError(Exception):
         else:
             return "DatabaseConnectError has been raised"
 
+
 class DatabaseQueryError(Exception):
 
     def __init__(self, *args):
@@ -75,6 +78,7 @@ class DatabaseQueryError(Exception):
 
     def __str__(self):
         if self.message:
-            return f"DatabaseQueryError, could not execute query: {self.message}"
+            return f"DatabaseQueryError, could not execute query:" \
+                   f" {self.message}"
         else:
             return "DatabaseQueryError has been raised"

@@ -1,0 +1,5 @@
+digraph {
+	node [fontsize=8 shape=record]
+	edge [arrowtail=empty dir=back]
+	0 [label="{Animal|name\ltype\l|constructor(name, type)\lgreet()\l}"]
+}

@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
+
 class FileABC(metaclass=ABCMeta):
     def __init__(self, name, location, lines):
         self.name = name
@@ -30,4 +31,3 @@ class FileABC(metaclass=ABCMeta):
     @abstractmethod
     def attribute_count(self):
         pass
-

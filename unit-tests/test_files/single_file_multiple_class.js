@@ -8,7 +8,7 @@ class Animal {
     }
 }
 
-class Insect extends Animal {
+class Insect {
     constructor(name, legCount) {
         this.name = name
         this.legCount = legCount

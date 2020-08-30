@@ -8,8 +8,15 @@ from graph.grapher import Grapher
 
 # Argument Parser
 parser = argparse.ArgumentParser()
-parser.add_argument('dbname', metavar='DB', type=str, default='database.db', help='A database name for storing analyses')
+parser.add_argument(
+    'dbname',
+    metavar='DB',
+    type=str,
+    default='database.db',
+    nargs='?',
+    help='A database name for storing analyses')
 args = parser.parse_args()
+
 
 class Menu(Cmd):
 
@@ -23,7 +30,8 @@ class Menu(Cmd):
         Syntax: add_record [path]
         Run an analysis on a file / folder and create a record in the database
         storing file, class, attribute and method counts.
-        :param path: a string representing the path to the file / folder for analysis
+        :param path: a string representing the path to the file / folder for
+        analysis
         :return: None
         """
         analyser = JSAnalyser(path)
@@ -33,17 +41,22 @@ class Menu(Cmd):
         attribute_count = analyser.attribute_count()
         method_count = analyser.method_count()
 
-        sql = f'insert into analysis (path, fileCount, classCount, attributeCount, methodCount) values ("{path}", {file_count}, {class_count}, {attribute_count}, {method_count})'
+        sql = f'insert into analysis (path, fileCount, classCount,' \
+              f' attributeCount, methodCount) values ' \
+              f'("{path}", {file_count}, {class_count},' \
+              f' {attribute_count}, {method_count})'
         self.db.query(sql)
 
     def do_get_record(self, path: str):
         """
         Syntax: get_record [path]
         Get an analysis record from the database
-        :param path: a string representing the path to the file / folder record in the DB
+        :param path: a string representing the path to the file / folder
+        record in the DB
         :return: None
         """
-        sql = f'select path, fileCount, classCount, attributeCount, methodCount from analysis where path="{path}"'
+        sql = f'select path, fileCount, classCount, attributeCount,' \
+              f' methodCount from analysis where path="{path}"'
         results = self.db.fetch(sql)
         if (len(results) == 0):
             print(f'No records found for path: {path}...')
@@ -59,7 +72,8 @@ class Menu(Cmd):
         """
         Syntax: delete_record [path]
         Remove an analysis record from the database
-        :param path: a string representing the path of the file / folder record in the DB
+        :param path: a string representing the path of the
+        file / folder record in the DB
         :return: None
         """
         sql = f'delete from analysis where path="{path}"'
@@ -83,7 +97,8 @@ class Menu(Cmd):
         """
         Syntax: analyse [path]
         Run an analysis on a file / folder
-        :param path: a string representing the path to the file / folder for analysis
+        :param path: a string representing the path to the
+        file / folder for analysis
         :return: None
         """
         analyser = JSAnalyser(path)
@@ -93,7 +108,8 @@ class Menu(Cmd):
         """
         Syntax: draw_class_diagram [path]
         Render a PDF class diagram of an es6 file / folder
-        :param path: a string representing the path to the file / folder for analysis
+        :param path: a string representing the path to the
+        file / folder for analysis
         :return: None
         """
         analyser = JSAnalyser(path)

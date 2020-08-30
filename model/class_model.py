@@ -3,11 +3,14 @@ import re
 from model.abc.classABC import ClassABC
 from model.method import Method
 
-method_regex = '^\s*[a-zA-Z0-9]+(\(){1}[a-zA-Z0-9,\s]*(\)){1}(?=\s\{)'
-attribute_regex = '(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])'
+method_regex = r'^\s*[a-zA-Z0-9]+(\(){1}[a-zA-Z0-9,\s]*(\)){1}(?=\s\{)'
+attribute_regex = r'(?<=this\.)[a-zA-Z0-9]*(?=\s=\s[a-zA-Z0-9\[\]\{\}])'
+
 
 class Class(ClassABC):
-    '''Represents a class object, contains a name, a list of methods and a list of attributes'''
+    '''Represents a class object, contains a name,
+    a list of methods and a list of attributes'''
+
     def __init__(self, name, lines):
         super().__init__(name, lines)
         self.methods = []
@@ -20,7 +23,8 @@ class Class(ClassABC):
         self.methods.append(newMethod)
 
     def find_methods(self):
-        '''Uses regular expressions to locate method definitions within a JavaScript file'''
+        '''Uses regular expressions to locate method definitions
+        within a JavaScript file'''
         for aLine in self.lines:
             re_match = re.search(method_regex, aLine)
             if (re_match):
@@ -31,7 +35,8 @@ class Class(ClassABC):
         self.attributes.append(newAttribute)
 
     def find_attributes(self):
-        '''Uses regular expressions to locate attribute definitions within a JavaScript file'''
+        '''Uses regular expressions to locate attribute definitions
+        within a JavaScript file'''
         for aLine in self.lines:
             re_match = re.search(attribute_regex, aLine)
             if (re_match):

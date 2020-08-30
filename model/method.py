@@ -1,7 +1,10 @@
 from model.abc.methodABC import MethodABC
 
+
 class Method(MethodABC):
-    '''Represents a method object, contains a name and a list of parameters'''
+    '''Represents a method object, contains a name
+    and a list of parameters'''
+
     def __init__(self, name):
         super().__init__(name)
         self.parameters = []
@@ -12,7 +15,8 @@ class Method(MethodABC):
         self.parameters.append(newParameter)
 
     def find_parameters(self):
-        '''Separates method parameters from a method definition and adds them to the parameter list'''
+        '''Separates method parameters from a method definition
+        and adds them to the parameter list'''
         open_bracket_index = self.name.index('(')
         close_bracket_index = self.name.index(')')
         parameters = []
