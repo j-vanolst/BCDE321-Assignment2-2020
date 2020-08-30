@@ -30,9 +30,9 @@ class Grapher:
         for i in range(0, len(self.labels)):
             self.graph.node(f'{i}', label=self.labels[i])
 
-    def render(self):
+    def render(self, view=True):
         if (len(self.labels) != 0):
-            self.graph.render('output/output')
+            self.graph.render('output/output', view=view)
             render('dot', 'pdf', 'output/output')
         else:
             print('Nothing to render...')
